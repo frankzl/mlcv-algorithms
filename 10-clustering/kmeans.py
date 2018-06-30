@@ -36,8 +36,13 @@ class KMeansModel:
             cluster_size = len(relevant)
             self.centroids[idx] = np.sum(relevant, axis=0) / cluster_size
 
-    def train(self, data):
-        for i in range(0,30):
+    def train(self, data, iterations):
+        for i in range(0,iterations):
             self.assign_cluster(data)
             self.update_centroids(data)
-            print(self.centroids)
+            
+    def get_clusters(self):
+        return self.cluster_assign
+    
+    def get_centroids(self):
+        return self.centroids
